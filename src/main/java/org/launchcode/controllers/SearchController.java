@@ -29,7 +29,7 @@ public class SearchController {
     @RequestMapping(value = "results")
     public String results(Model model, @RequestParam String searchType, @RequestParam String searchTerm  ) {
         ArrayList<HashMap<String, String>> jobs;
-       if (searchType.equals("all") || searchType.equals("")) {
+       if (searchType.equals("all")) {
            jobs = JobData.findByValue(searchTerm);
        } else {
            jobs = JobData.findByColumnAndValue(searchType, searchTerm);

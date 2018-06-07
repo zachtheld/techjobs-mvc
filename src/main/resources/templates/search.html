@@ -37,11 +37,12 @@
     <hr />
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
-    <p th:text="${jobs.size()} + ' Jobs in List'"></p>
+    <p th:if ="${jobs} and ${jobs.size()}" th:text="${jobs.size()} + ' Jobs in List'"></p>
+    <p th:unless="${jobs} and ${jobs.size()}">No Jobs!</p>
     <table class="job-listing" th:each="job : ${jobs}">
-        <tr th:each="field : ${job}">
-            <td th:text="${field.key}"></td>
-            <td th:text="${field.value}"></td>
+        <tr th:each="column : ${job}">
+            <td th:text="${column.key}"></td>
+            <td th:text="${column.value}"></td>
         </tr>
     </table>
 </div>
